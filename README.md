@@ -33,22 +33,18 @@ It shares the Teen Patti Firebase project but stays out of its way:
 - Deck runs out: the pile minus its top card gets shuffled back in.
 - Peeks stay face up for 3 seconds (4 for King peeks), then it's memory.
 
-## Setup (once)
-You already have Firebase tools and a Firebase project from Teen Patti, so this is short.
-
-1. **GitHub:** make a new repo `declare`. Upload everything in this folder. Settings > Pages > Deploy from branch `main`, folder `/docs`.
-2. **Firebase config:** open `docs/firebase-config.js` on GitHub and paste the same config that's in your Teen Patti `docs/firebase-config.js`. Commit.
-3. **Server:** in Terminal:
+## Deploying the server (any laptop)
+The Firebase project (`teenpatti-44fde`) and web config are already filled in.
+1. Install Node.js LTS from nodejs.org.
+2. Open Terminal (Mac) or PowerShell (Windows) and run, one line at a time:
    ```
    cd ~/Downloads/declare
-   firebase use --add
+   npx firebase-tools login
+   cd functions
+   npm install
+   cd ..
+   npx firebase-tools deploy --only functions,firestore:rules
    ```
-   Pick your Teen Patti project, call it `default`. Then:
-   ```
-   cd functions && npm install && cd ..
-   firebase deploy --only functions,firestore:rules
-   ```
-4. Open the GitHub Pages link, create a table, send friends the invite link.
 
 ## Updating later
-Upload changed files to GitHub. If anything in `functions/` changed, also run `firebase deploy --only functions` from this folder.
+Website changes go live from GitHub on their own. If anything in `functions/` changed, run the last line above again from this folder.
