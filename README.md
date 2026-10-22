@@ -48,3 +48,6 @@ The Firebase project (`teenpatti-44fde`) and web config are already filled in.
 
 ## Updating later
 Website changes go live from GitHub on their own. If anything in `functions/` changed, run the last line above again from this folder.
+
+## Online play (Oct 2026)
+Online tables no longer need the Firebase function. The host's browser runs the same server code (`srv/`) and friends connect straight to the host, same as Ultimate Hold'em. See `p2p/core.js`. If the host closes the page the table pauses until they come back; a refresh is fine.
